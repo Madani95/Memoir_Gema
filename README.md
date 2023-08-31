@@ -17,13 +17,13 @@ To run this application, you will need the following:
 * Matplotlib
 * PyPDF2
 * Langchain
-* OpenAI API key
+* Your OpenAI API key
 
 ## Installation
 
 1. Clone the repository.
 2. Install the required packages.
-3. Create a `.env` file and add your OpenAI API key.
+3. Create a `.env` file and add your OpenAI API key (this is very important, don't forget it)
 4. Run the application.
 
 ## Usage
