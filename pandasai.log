@@ -1,1 +1,171 @@
+2023-08-31 17:08:00 [INFO] Question: En fran�ais, Quelle est la moyenne des tips par sexe
+2023-08-31 17:08:00 [INFO] Running PandasAI with openai LLM...
+2023-08-31 17:08:00 [INFO] Prompt ID: aa320b84-0f6a-4131-9cb8-b30d7c8a9cf3
+2023-08-31 17:08:09 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Process
+    df = dfs[0]
+    avg_tips_by_sex = df.groupby('sex')['tip'].mean()
+    
+    # Analyze
+    result = {
+        "type": "dataframe",
+        "value": avg_tips_by_sex
+    }
+    
+    return result
+
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-08-31 17:08:09 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    avg_tips_by_sex = df.groupby('sex')['tip'].mean()
+    result = {'type': 'dataframe', 'value': avg_tips_by_sex}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-08-31 17:08:09 [INFO] Answer: {'type': 'dataframe', 'value': sex
+Female    2.833448
+Male      3.089618
+Name: tip, dtype: float64}
+2023-08-31 17:08:09 [INFO] Executed in: 8.83405351638794s
+2023-08-31 17:12:19 [INFO] Question: En fran�ais, donne moi un camembert des tips par sexe
+2023-08-31 17:12:19 [INFO] Running PandasAI with openai LLM...
+2023-08-31 17:12:19 [INFO] Prompt ID: 09c5f5c6-683b-4788-8d7a-a3eb635258f2
+2023-08-31 17:12:31 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    df = dfs[0]
+    
+    # Group the data by sex and calculate the mean tip
+    tips_by_sex = df.groupby('sex')['tip'].mean()
+    
+    # Plot the pie chart
+    plt.figure(figsize=(6, 6))
+    plt.pie(tips_by_sex, labels=tips_by_sex.index, autopct='%1.1f%%')
+    plt.title("Camembert des tips par sexe")
+    plt.savefig("exports/charts/temp_chart.png")
+    plt.close()
+    
+    # Return the path of the plot
+    return {"type": "plot", "value": "exports/charts/temp_chart.png"}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-08-31 17:12:31 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    tips_by_sex = df.groupby('sex')['tip'].mean()
+    plt.figure(figsize=(6, 6))
+    plt.pie(tips_by_sex, labels=tips_by_sex.index, autopct='%1.1f%%')
+    plt.title('Camembert des tips par sexe')
+    plt.savefig('exports/charts/temp_chart.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'exports/charts/temp_chart.png'}
+
+
+result = analyze_data(dfs)
+        ```
+2023-08-31 17:12:32 [INFO] Answer: {'type': 'plot', 'value': 'exports/charts/temp_chart.png'}
+2023-08-31 17:12:32 [INFO] Executed in: 12.434925079345703s
+2023-08-31 17:12:58 [INFO] Question: En fran�ais, donne moi une courbe des tips par sexe
+2023-08-31 17:12:58 [INFO] Running PandasAI with openai LLM...
+2023-08-31 17:12:58 [INFO] Prompt ID: 72fc93c7-55e4-4c42-9a07-812bd1ad1452
+2023-08-31 17:13:11 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    df = dfs[0]
+    
+    # Group the data by sex and calculate the average tip
+    tips_by_sex = df.groupby('sex')['tip'].mean()
+    
+    # Plot the tips by sex
+    plt.figure()
+    tips_by_sex.plot(kind='bar')
+    plt.xlabel('Sex')
+    plt.ylabel('Average Tip')
+    plt.title('Average Tips by Sex')
+    plt.savefig('exports/charts/temp_chart.png')
+    plt.close()
+    
+    # Return the path of the plot
+    return {"type": "plot", "value": "exports/charts/temp_chart.png"}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-08-31 17:13:11 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    tips_by_sex = df.groupby('sex')['tip'].mean()
+    plt.figure()
+    tips_by_sex.plot(kind='bar')
+    plt.xlabel('Sex')
+    plt.ylabel('Average Tip')
+    plt.title('Average Tips by Sex')
+    plt.savefig('exports/charts/temp_chart.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'exports/charts/temp_chart.png'}
+
+
+result = analyze_data(dfs)
+        ```
+2023-08-31 17:13:12 [INFO] Answer: {'type': 'plot', 'value': 'exports/charts/temp_chart.png'}
+2023-08-31 17:13:12 [INFO] Executed in: 13.122395992279053s
 
