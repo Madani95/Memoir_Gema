@@ -25,8 +25,8 @@ from htmlTemplates import css, bot_template, user_template, dark_theme_css
 
 # Chargement des variables d'environnement
 load_dotenv()
-openai_api_key = os.getenv("openai_api_key", 'YOUR_OPENAI_API_KEY')
-
+#openai_api_key = os.getenv("openai_api_key", 'YOUR_OPENAI_API_KEY')
+openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 # Classe personnalisée pour intégrer PandasAI
 class CustomPandasAI(PandasAI):
@@ -62,9 +62,10 @@ class CSVChat:
     # Gérer la conversation avec le DataFrame
     def chat_with_df(self, df, prompt):
         
-        st.session_state.openai_api_key = openai_api_key
+       # st.session_state.openai_api_key = openai_api_key
 
-        llm = OpenAI(api_token=st.session_state.openai_api_key)
+        #llm = OpenAI(api_token=st.session_state.openai_api_key)
+        llm = OpenAI(api_token=openai_api_key)
         pandas_ai = CustomPandasAI(llm)
         french_prompt = "En français, " + prompt
 
@@ -167,7 +168,8 @@ class PDFProcessor:
         return text_splitter.split_text(self.pdf_text)
 
     def _get_vectorstore(self):
-        embeddings = OpenAIEmbeddings()
+        #embeddings = OpenAIEmbeddings()
+        embeddings = OpenAIEmbeddings(api_key=openai_api_key)
         return FAISS.from_texts(texts=self.text_chunks, embedding=embeddings)
 
 
