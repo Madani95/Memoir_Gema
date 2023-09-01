@@ -8,6 +8,7 @@ from pandasai import SmartDatalake
 import os
 from dotenv import load_dotenv
 import matplotlib
+import plotly as px
 import tkinter as tk
 import matplotlib.pyplot as plt
 from PyPDF2 import PdfReader
@@ -20,7 +21,7 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template, dark_theme_css
 
 #Définition du Backend pour les figures de matplotlib
-matplotlib.use("Agg")
+#matplotlib.use("Agg")
 
 # Chargement des variables d'environnement
 load_dotenv()
