@@ -1,4 +1,4 @@
-$ pip install plotly
+! pip install plotly
 
 # Importation des bibliothèques nécessaires
 import streamlit as st
