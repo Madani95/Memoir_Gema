@@ -20,7 +20,7 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template, dark_theme_css
 
 #Définition du Backend pour les figures de matplotlib
-matplotlib.use("TkAgg")
+matplotlib.use("Agg")
 
 # Chargement des variables d'environnement
 load_dotenv()
