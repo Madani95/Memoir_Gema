@@ -8,6 +8,7 @@ from pandasai import SmartDatalake
 import os
 from dotenv import load_dotenv
 import matplotlib
+import tkinter as tk
 import matplotlib.pyplot as plt
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
