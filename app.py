@@ -1,3 +1,4 @@
+
 # Importation des bibliothèques nécessaires
 import streamlit as st
 import pandas as pd
@@ -8,9 +9,9 @@ from pandasai import SmartDatalake
 import os
 from dotenv import load_dotenv
 import matplotlib
-import plotly.express as px
-#import tkinter as tk
+import tkinter as tk
 import matplotlib.pyplot as plt
+import plotly.express as px
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
@@ -21,12 +22,12 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template, dark_theme_css
 
 #Définition du Backend pour les figures de matplotlib
-#matplotlib.use("Agg")
+matplotlib.use("TkAgg")
 
 # Chargement des variables d'environnement
 load_dotenv()
-#openai_api_key = os.getenv("openai_api_key", 'YOUR_OPENAI_API_KEY')
-openai_api_key = st.secrets["OPENAI_API_KEY"]
+openai_api_key = os.getenv("openai_api_key", 'YOUR_OPENAI_API_KEY')
+
 
 # Classe personnalisée pour intégrer PandasAI
 class CustomPandasAI(PandasAI):
@@ -62,10 +63,9 @@ class CSVChat:
     # Gérer la conversation avec le DataFrame
     def chat_with_df(self, df, prompt):
         
-       # st.session_state.openai_api_key = openai_api_key
+        st.session_state.openai_api_key = openai_api_key
 
-        #llm = OpenAI(api_token=st.session_state.openai_api_key)
-        llm = OpenAI(api_token=openai_api_key)
+        llm = OpenAI(api_token=st.session_state.openai_api_key)
         pandas_ai = CustomPandasAI(llm)
         french_prompt = "En français, " + prompt
 
@@ -114,10 +114,10 @@ class CSVChat:
 
             with col2:
                 if self.response:
-                    if self.current_plot:  # Check if there's a plot
-                        fig = px.line(self.df)  # Exemple : Utilisez la fonction Plotly Express appropriée ici
+                    if self.current_plot:  
+                        fig = px.line(self.df)  
                         st.plotly_chart(fig)
-                    else:  # Otherwise, display the textual response
+                    else:  
                         col2.write(self.response)
 
             # Affichage de l'historique des promptes
@@ -168,8 +168,7 @@ class PDFProcessor:
         return text_splitter.split_text(self.pdf_text)
 
     def _get_vectorstore(self):
-        #embeddings = OpenAIEmbeddings()
-        embeddings = OpenAIEmbeddings(api_key=openai_api_key)
+        embeddings = OpenAIEmbeddings()
         return FAISS.from_texts(texts=self.text_chunks, embedding=embeddings)
 
 
