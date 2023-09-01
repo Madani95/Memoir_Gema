@@ -10,7 +10,7 @@ from pandasai import SmartDatalake
 import os
 from dotenv import load_dotenv
 import matplotlib
-import plotly as px
+import plotly.express as px
 import tkinter as tk
 import matplotlib.pyplot as plt
 from PyPDF2 import PdfReader
