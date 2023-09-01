@@ -113,7 +113,8 @@ class CSVChat:
             with col2:
                 if self.response:
                     if self.current_plot:  # Check if there's a plot
-                        col2.pyplot(self.current_plot)
+                        fig = px.line(self.df)  # Exemple : Utilisez la fonction Plotly Express appropriée ici
+                        st.plotly_chart(fig)
                     else:  # Otherwise, display the textual response
                         col2.write(self.response)
 
