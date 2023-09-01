@@ -1,3 +1,5 @@
+$ pip install plotly
+
 # Importation des bibliothèques nécessaires
 import streamlit as st
 import pandas as pd
